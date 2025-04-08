@@ -1,0 +1,8 @@
+numpy
+pathlib
+torch
+pandas
+torchvision
+matplotlib
+pillow 
+
