@@ -5,4 +5,4 @@ pandas
 torchvision
 matplotlib
 pillow 
-
+wandb
