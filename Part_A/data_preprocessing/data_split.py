@@ -1,42 +1,34 @@
-import random
+import os
+import shutil
 import numpy as np
 
 # Set seed for reproducibility
 np.random.seed(42)
 
-import os
-import shutil
-import random
-from pathlib import Path
-
-# Set your paths
-
-base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-root_dir = os.path.join(base_dir, "inaturalist_12K")
-train_dir = root_dir / "train"
-val_dir = root_dir / "val"
+# Define paths
+root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "inaturalist_12K"))
+train_dir = os.path.join(root_dir, "train")
+val_dir = os.path.join(root_dir, "val")
 
 # Create val directory if it doesn't exist
-val_dir.mkdir(exist_ok=True)
+os.makedirs(val_dir, exist_ok=True)
 
-
-# For each class in train
-for class_folder in train_dir.iterdir():
-    if class_folder.is_dir():
-        images = list(class_folder.glob("*.jpg"))
-        num_val = int(0.2 * len(images))  # 20% of images
-
-        # Randomly choose validation images
-        val_images = random.sample(images, num_val)
+# For each class folder in train
+for class_name in os.listdir(train_dir):
+    class_path = os.path.join(train_dir, class_name)
+    if os.path.isdir(class_path):
+        images = [f for f in os.listdir(class_path) if f.endswith(".jpg")]
+        num_val = int(0.2 * len(images))  # 20% split
+        val_images = np.random.choice(images, size=num_val, replace=False)
 
         # Create corresponding class folder in val
-        val_class_dir = val_dir / class_folder.name
-        val_class_dir.mkdir(parents=True, exist_ok=True)
+        val_class_path = os.path.join(val_dir, class_name)
+        os.makedirs(val_class_path, exist_ok=True)
 
-        # Move selected images to validation folder
-        for img_path in val_images:
-            shutil.move(str(img_path), str(val_class_dir / img_path.name))
+        # Move selected images to val directory
+        for img in val_images:
+            src_path = os.path.join(class_path, img)
+            dst_path = os.path.join(val_class_path, img)
+            shutil.move(src_path, dst_path)
 
-print("Validation set created successfully.")
-
-
+print("Validation split completed")
