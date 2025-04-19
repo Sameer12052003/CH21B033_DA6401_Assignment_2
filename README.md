@@ -127,7 +127,7 @@ python finetune.py
 
 ## Results
 
-# Custom CNN model
+Custom CNN model
 
 | Metric            | Accuracy (%)         |
 |-------------------|----------------------|
@@ -135,7 +135,7 @@ python finetune.py
 | Validation Accuracy| 30.32               |
 | Test Accuracy      | 30.40               |
 
-# Pre-trained GoogLeNet model
+Pre-trained GoogLeNet model
 
 | Metric            | Accuracy (%)         |
 |-------------------|----------------------|
