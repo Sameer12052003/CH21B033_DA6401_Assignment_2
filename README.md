@@ -29,11 +29,11 @@ pip install -r requirements.txt
 ## Data Setup
 
 Download the inaturalist dataset from: https://storage.googleapis.com/wandb_datasets/nature_12K.zip
+
 Unzip the dataset into a folder
 
-To create validation data out of training data
-
 # Part A
+To create validation data out of training data
 
 ```bash
 cd Part_A
@@ -42,14 +42,15 @@ python data_split.py
 ```
 
 # PartB
+To create validation data out of training data
 ```bash
+
 cd Part_B
 cd data_preprocessing
 python data_split.py
 ```
 
-
-## Usage Instructions
+### Usage Instructions
 
 # Part A
 
@@ -82,7 +83,7 @@ python finetune.py
 
 ## Folder Strucuture
 <pre> 
-project-root/ 
+CH21B033_DA6401_Assignment_2/ 
 
 ├── Part_A/ 
     ├── best_model_metrics_and_path/ 
