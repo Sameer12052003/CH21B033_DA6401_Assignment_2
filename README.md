@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 Download the inaturalist dataset from: https://storage.googleapis.com/wandb_datasets/nature_12K.zip
 
-Unzip the dataset into a folder
+Unzip the dataset into a folder named 'inaturalist_12K' in folders Part_A and Part_B both.
 
 # Part A
 To create validation data out of training data
