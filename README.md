@@ -1,7 +1,13 @@
 # CH21B033_DA6401_Assignment_2
 
 ## Name : Sameer Deshpande
+
 ## Roll No : CH21B033
+
+This repository contains the implemenatation of part A and part B of assignment 2 of the course 'Introduction to Deep Learning' DA6401.
+
+It tunes a custom CNN, trains, validates and tests it on the inaturalist dataset. It also finetunes GoogLeNet model on the same dataset. It compares performance of these two models.
+
 
 ## Installation Instructions
 
