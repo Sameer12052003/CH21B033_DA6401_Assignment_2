@@ -126,3 +126,6 @@ CH21B033_DA6401_Assignment_2/
 ├── README.md                                   # Project overview and instructions 
 ├── requirements.txt                            # Python dependencies </pre> 
 
+## Notes
+
+Part A and Part B of this assignment contain only one single README.md file that is present in the root directory of this project.
