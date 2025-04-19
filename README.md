@@ -77,7 +77,8 @@ Download the inaturalist dataset from: https://storage.googleapis.com/wandb_data
 
 Unzip the dataset into a folder named 'inaturalist_12K' in folders Part_A and Part_B both.
 
-# Part A
+Part A:
+
 To create validation data out of training data
 
 ```bash
@@ -86,7 +87,8 @@ cd data_preprocessing
 python data_split.py
 ```
 
-# PartB
+PartB:
+
 To create validation data out of training data
 ```bash
 
@@ -97,7 +99,7 @@ python data_split.py
 
 ### Usage Instructions
 
-# Part A
+Part A:
 
 ```bash
 # To run the sweep code for hyperparameter tuning
@@ -118,7 +120,8 @@ export PYTHONPATH
 python grid_plotting.py
 ```
 
-# Part B
+Part B:
+
 ```bash
 # To finetune, evaluate and test the GoogLeNet model 
 cd Part_B
@@ -127,7 +130,7 @@ python finetune.py
 
 ## Results
 
-Custom CNN model
+Custom CNN model:
 
 | Metric            | Accuracy (%)         |
 |-------------------|----------------------|
@@ -135,7 +138,7 @@ Custom CNN model
 | Validation Accuracy| 30.32               |
 | Test Accuracy      | 30.40               |
 
-Pre-trained GoogLeNet model
+Pre-trained GoogLeNet model:
 
 | Metric            | Accuracy (%)         |
 |-------------------|----------------------|
