@@ -71,7 +71,7 @@ for img, label in test_dataset:
 samples = dict(sorted(samples.items()))
 
 # Prepare wandb Table
-columns = ["Class Name", "Predicted Label", "Image"]
+columns = ["True Label", "Predicted Label (With Confidence)", "Image"]
 table = wandb.Table(columns=columns)
 
 model.eval()
@@ -84,9 +84,20 @@ with torch.no_grad():
         class_name = idx_to_class[label_idx]
         pred_class = idx_to_class[predicted_idx.item()]
         
+        # Confidence score
+        probabilities = F.softmax(output, dim=1)
+        confidence_score = probabilities[0, predicted_idx].item()
+        
+        # Correct/Incorrect tag
+        correct_tag = "✅" if class_name == pred_class else "❌"
+        
         # Convert tensor image to PIL for wandb logging
         image_pil = transforms.ToPILImage()(img.cpu())
-        table.add_data(class_name, pred_class, wandb.Image(image_pil))
+        
+        # Add data to the table
+        table.add_data(f"{class_name}", 
+                       f"{pred_class}, Confidence score :({round(confidence_score, 2)}), Predicted {correct_tag}", 
+                       wandb.Image(image_pil))
 
 # Log the table to wandb
 wandb.log({"Prediction Grid": table})
